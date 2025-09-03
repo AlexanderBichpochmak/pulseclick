@@ -4,19 +4,21 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>PulseClick — автокликер с точной симуляцией drag‑click (Бета)</title>
-  <meta name="description" content="PulseClick — аккуратный автокликер с точной симуляцией drag‑click. Красивый честный установщик, видимый прогресс, аккуратные ярлыки. Скачать PulseClickInstaller.">
-  <meta name="keywords" content="PulseClick, ПульсКлик, пульс клик, автокликер, autoclicker, драг клик, drag click, как делать драг клик, мышка, кликер, симулятор кликов, скачать автокликер, быстрый клик, clicker">
-  <meta name="theme-color" content="#11141B">
+  <meta name="description" content="PulseClick — аккуратный автокликер с точной симуляцией drag‑click. Красивый честный инсталлятор, реальный прогресс, аккуратные ярлыки. Скачать PulseClickInstaller." />
+  <meta name="keywords" content="PulseClick, ПульсКлик, пульс клик, автокликер, autoclicker, драг клик, drag click, как делать драг клик, мышка, кликер, симулятор кликов, скачать автокликер, быстрый клик, clicker, Pulse Click" />
+  <meta name="theme-color" content="#11141B" />
+  <link rel="preconnect" href="https://drive.google.com" />
+  <link rel="dns-prefetch" href="https://drive.google.com" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="PulseClick — автокликер с точной симуляцией drag‑click (Бета)">
-  <meta property="og:description" content="Честный инсталлятор, видимый прогресс, аккуратные ярлыки. Скачать PulseClickInstaller.">
-  <meta property="og:type" content="website">
+  <meta property="og:title" content="PulseClick — автокликер с точной симуляцией drag‑click (Бета)" />
+  <meta property="og:description" content="Честный инсталлятор, видимый прогресс, аккуратные ярлыки. Скачать PulseClickInstaller." />
+  <meta property="og:type" content="website" />
 
   <style>
     :root{
       --bg:#0f131a; --text:#EDEFF3; --muted:#C8CCDA; --card:#151b26; --border:#2b3550;
-      --brand-start:#6C5CE7; --brand-end:#4C7CFB; --accent:#00D1FF;
+      --brand-start:#6C5CE7; --brand-end:#4C7CFB; --accent:#00D1FF; --good:#A3E7A1; --warn:#FFC86B; --bad:#FF8A8A;
       --radius-12:12px; --radius-10:10px; --radius-8:8px;
       --elev-1: 0 18px 48px rgba(0,0,0,.35);
       --elev-2: 0 10px 34px rgba(0,0,0,.32);
@@ -29,7 +31,7 @@
     a{color:inherit;text-decoration:none}
     .container{max-width:var(--container);margin-inline:auto;padding-inline:20px}
 
-    /* HERO с аурорами и тонким шумом */
+    /* HERO */
     .hero{
       position:relative; overflow:clip;
       background:
@@ -52,13 +54,13 @@
     .h1{font-size:clamp(36px, 5.2vw, 64px); line-height:1.07; letter-spacing:-0.02em; margin:16px 0 10px; font-weight:750}
     .sub{font-size:18px; color:var(--muted); max-width:780px}
 
-    /* Кнопки */
+    /* Buttons */
     .actions{display:flex; gap:12px; margin-top:28px; flex-wrap:wrap}
     .btn{
       display:inline-flex; align-items:center; justify-content:center; gap:10px;
       padding:14px 18px; border-radius:var(--radius-10); border:0; color:#fff; cursor:pointer;
       transition: transform .25s ease, box-shadow .25s ease, opacity .2s ease, background .25s ease;
-      will-change: transform, box-shadow; position:relative; text-align:center; white-space:nowrap;
+      position:relative; text-align:center; white-space:nowrap;
     }
     .btn:hover{transform: translateY(-2px)}
     .btn:active{transform: translateY(0)}
@@ -74,7 +76,7 @@
     }
     .btn:focus-visible .ring{opacity:1}
 
-    /* Секции и карточки */
+    /* Sections */
     .section{padding-block:68px}
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)) , var(--card);
@@ -82,8 +84,11 @@
     }
     .section h2{font-size:28px; margin:0 0 18px; letter-spacing:-.02em}
     .muted{color:var(--muted)}
+    .status-ok{color:var(--good)}
+    .status-warn{color:var(--warn)}
+    .status-err{color:var(--bad)}
 
-    /* Сетка фич */
+    /* Features */
     .features{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
     @media (max-width:960px){ .features{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:640px){ .features{grid-template-columns:1fr} }
@@ -95,7 +100,7 @@
       border:1px solid rgba(108,92,231,.35)
     }
 
-    /* Демонстрация */
+    /* Demo installer */
     .demo{display:grid; grid-template-columns: 1.2fr .8fr; gap:18px}
     @media (max-width:920px){ .demo{grid-template-columns:1fr; } }
     .installer{
@@ -118,17 +123,11 @@
     }
     .small{font-size:13px; color:var(--muted); margin-top:6px}
 
-    /* Скачать */
+    /* Download */
     .download-wrap{display:flex; gap:14px; flex-wrap:wrap; align-items:center}
     .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid var(--border); color:var(--muted); background:rgba(27,33,48,.6)}
     .kv{display:flex; gap:8px; align-items:center}
     .kv b{font-weight:600}
-
-    /* Обновления */
-    .updates{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin-top:10px}
-    .status-ok{color:#A3E7A1}
-    .status-warn{color:#FFC86B}
-    .status-err{color:#FF8A8A}
 
     /* FAQ */
     .faq{display:grid; grid-template-columns:1fr 1fr; gap:16px}
@@ -141,17 +140,35 @@
     .footer a{color:#D6DAE6}
     .nav{display:flex; gap:16px; flex-wrap:wrap}
 
-    /* Доступность */
-    :focus-visible{outline:none}
-    .focusable:focus-visible{box-shadow: 0 0 0 2px rgba(255,255,255,.08), 0 0 0 6px rgba(76,124,251,.28)}
+    /* Update card (ручной показ позже через window.PulseClickUpdate) */
+    .update-card{
+      margin-top:18px; padding:16px;
+      border:1px solid rgba(108,92,231,.45);
+      background:
+        linear-gradient(180deg, rgba(108,92,231,.10), rgba(108,92,231,0)),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,0)),
+        var(--card);
+      border-radius:14px;
+    }
+    .update-card .head{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+      margin:0 0 8px;
+    }
+    .update-badge{
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(108,92,231,.18); border:1px solid rgba(108,92,231,.45);
+      color:#D6DAFF; padding:6px 10px; border-radius:999px; font-size:14px;
+    }
+    .update-notes{color:var(--muted); margin:8px 0 0; padding-left:18px}
+    .update-actions{display:flex; gap:10px; margin-top:10px; flex-wrap:wrap}
 
-    /* Меньше анимации */
+    /* Reduced motion */
     @media (prefers-reduced-motion: reduce){
       .btn, .bar{transition:none}
       .btn:hover{transform:none}
     }
 
-    /* Невидимый, но индексируемый блок с ключевыми словами (не злоупотребляем) */
+    /* SEO helper */
     .seo-cloud{
       position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden;
     }
@@ -159,30 +176,47 @@
 </head>
 <body>
 
-  <!-- SEO cloud (под поисковые запросы) -->
+  <!-- SEO cloud -->
   <div class="seo-cloud">
-    Автокликер, PulseClick, ПульсКлик, пульс клик, как делать драг клик, drag click, драг клик на мышке, быстрый клик, кликер для мышки, autoclicker windows, лучший автокликер, скачать автокликер бесплатно
+    Автокликер, PulseClick, ПульсКлик, пульс клик, как делать драг клик, drag click, драг клик на мышке, быстрый клик, кликер для мышки, autoclicker windows, лучший автокликер, скачать автокликер бесплатно, Pulse Click
   </div>
 
   <!-- HERO -->
   <header class="hero">
     <div class="container hero-inner">
       <span class="badge">PulseClick • честная установка без сюрпризов <span class="beta">• Бета</span></span>
-      <h1 class="h1">Точная симуляция drag‑click. Один из лучших и красивых автокликеров.</h1>
+      <h1 class="h1">Точная симуляция drag‑click. Лучший из лучших.</h1>
       <p class="sub">
-        PulseClick уважает ваш ПК: видимый прогресс, прозрачные шаги, аккуратные ярлыки и быстрый старт. Ничего лишнего, только то, что вы просили.
+        PulseClick уважает ваш ПК: видимый прогресс, прозрачные шаги, аккуратные ярлыки и быстрый старт. Ничего лишнего.
       </p>
+
       <div class="actions">
         <a id="downloadBtn" class="btn btn-primary focusable" href="#" rel="noopener">
           <span id="dlLabel">Скачать PulseClickInstaller (Бета)</span>
           <span id="dlMeta" class="muted" style="font-size:14px;opacity:.9"></span>
           <span class="ring"></span>
         </a>
-        <a class="btn btn-secondary focusable" href="#features"><span>Что внутри</span></a>
+        <a class="btn btn-secondary focusable" href="#features"><span>Что внутри</span><span class="ring"></span></a>
       </div>
-      <div class="updates">
-        <button id="checkUpdates" class="btn btn-secondary focusable" type="button"><span>Проверить обновления</span><span class="ring"></span></button>
-        <span id="updateStatus" class="muted">Текущая версия: <b id="curVer">v1.0.0-beta</b>. Это бета‑версия.</span>
+
+      <!-- Карточка обновления (по умолчанию скрыта; покажем вручную через window.PulseClickUpdate позже) -->
+      <div id="updateCard" class="update-card" style="display:none">
+        <div class="head">
+          <span class="update-badge">Обновление доступно</span>
+          <span id="updVersion" class="status-ok"></span>
+          <span id="updDate" class="muted"></span>
+        </div>
+        <div id="updSummary" class="muted"></div>
+        <ul id="updNotes" class="update-notes"></ul>
+        <div class="update-actions">
+          <a id="updateBtn" class="btn btn-secondary focusable" href="#" rel="noopener">Скачать обновление</a>
+          <span class="pill"><span class="kv"><b>Текущая</b> <span id="curVerPill" style="margin-left:6px">v1.0.0-beta</span></span></span>
+        </div>
+      </div>
+
+      <!-- Если обновления нет — явный статус -->
+      <div id="noUpdateInfo" class="muted" style="margin-top:10px">
+        Обновлений не найдено. Текущая версия: <b id="curVer">v1.0.0-beta</b>. Это бета‑версия.
       </div>
     </div>
   </header>
@@ -248,11 +282,11 @@
       </div>
       <div class="card" style="padding:18px;">
         <h2>Как сделать drag‑click надёжно</h2>
-        <p class="muted">В PulseClick важно не “нажать быстрее”, а имитировать устойчивый паттерн движения. Поэтому алгоритм аккуратно сглаживает
-          пики, держит частоту и стабильно попадает в окна ввода. Если вам нужен “как делать драг клик” — начните с профиля по умолчанию,
+        <p class="muted">В PulseClick важно не “нажать быстрее”, а имитировать устойчивый паттерн движения. Алгоритм сглаживает пики,
+          держит частоту и стабильно попадает в окна ввода. Если нужен “как делать драг клик” — начните с профиля по умолчанию,
           затем тонко подстройте CPS под свою мышку.</p>
         <ul class="muted">
-          <li>— Понятные кнопки и честные disabled‑состояния</li>
+          <li>— Понятные состояния кнопок и честные дизейблы</li>
           <li>— Видимый путь установки и аккуратная распаковка</li>
           <li>— Мягкие микроанимации без визуального шума</li>
         </ul>
@@ -274,39 +308,11 @@
             <span id="dlMeta2" class="muted" style="font-size:14px;opacity:.9"></span>
             <span class="ring"></span>
           </a>
-          <a id="mirrorBtn" class="btn btn-secondary focusable" href="#" rel="noopener">Зеркало</a>
           <span class="pill"><span class="kv"><b>Версия</b> <span id="ver" style="margin-left:6px">v1.0.0-beta</span></span></span>
           <span class="pill"><span class="kv"><b>Платформа</b> <span style="margin-left:6px">Windows</span></span></span>
           <span class="pill"><span class="kv"><b>Статус</b> <span id="betaTag" style="margin-left:6px" class="status-warn">Бета</span></span></span>
         </div>
         <p class="muted" style="margin-top:10px" id="platformHint">Инсталлятор доступен для Windows.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <div class="container">
-      <div class="card" style="padding:20px;">
-        <h2>FAQ — автокликер, драг клик, мышка</h2>
-        <div class="faq" style="margin-top:10px;">
-          <div class="qa">
-            <h4>Это автокликер?</h4>
-            <p class="muted">PulseClick — больше, чем автокликер: это симулятор drag‑click. Он аккуратно воспроизводит паттерн движения, чтобы клик чувствовался естественно.</p>
-          </div>
-          <div class="qa">
-            <h4>Как делать драг клик?</h4>
-            <p class="muted">Запустите PulseClick, выберите профиль “Drag‑click (базовый)”, подстройте CPS под свою мышь. Не пытайтесь разгонять пачку кликов — важна стабильность.</p>
-          </div>
-          <div class="qa">
-            <h4>Мышка подойдёт любая?</h4>
-            <p class="muted">Большинство современных мышей подойдут. Если у вашей жёсткое дребезжание контактов — поиграйте с порогами и сглаживанием в настройках PulseClick.</p>
-          </div>
-          <div class="qa">
-            <h4>Есть ли обновления?</h4>
-            <p class="muted">Нажмите “Проверить обновления” выше. В бета‑версии обновления могут выходить чаще, чем стабильные релизы.</p>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -319,12 +325,11 @@
         <a href="#features">Фичи</a>
         <a href="#demo">Демо</a>
         <a href="#download">Скачать</a>
-        <a href="#faq">FAQ</a>
       </nav>
     </div>
   </footer>
 
-  <!-- JSON-LD для SEO (SoftwareApplication + FAQ) -->
+  <!-- JSON-LD для SEO (SoftwareApplication) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -339,65 +344,53 @@
     "keywords": "автокликер, drag click, драг клик, как делать драг клик, мышка, PulseClick, пульс клик, autoclicker, кликер"
   }
   </script>
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"FAQPage",
-    "mainEntity":[
-      {"@type":"Question","name":"Это автокликер?","acceptedAnswer":{"@type":"Answer","text":"PulseClick — больше, чем автокликер: это симулятор drag‑click. Он аккуратно воспроизводит паттерн движения, чтобы клик чувствовался естественно."}},
-      {"@type":"Question","name":"Как делать драг клик?","acceptedAnswer":{"@type":"Answer","text":"Запустите PulseClick, выберите профиль “Drag‑click (базовый)”, подстройте CPS под свою мышь. Не гонись за пиками — важна стабильность."}},
-      {"@type":"Question","name":"Мышка подойдёт любая?","acceptedAnswer":{"@type":"Answer","text":"Большинство современных мышей подойдут. Если у вашей жёсткое дребезжание контактов — поиграйте с порогами и сглаживанием."}},
-      {"@type":"Question","name":"Есть ли обновления?","acceptedAnswer":{"@type":"Answer","text":"Нажмите “Проверить обновления”. В бета‑версии обновления могут выходить чаще, чем стабильные релизы."}}
-    ]
-  }
-  </script>
 
   <script>
-    // ——— Настройки ———
+    // ——— Конфиг ———
     const CURRENT_VERSION = '1.0.0-beta';
-    // Исходная ссылка (view) и прямая (uc?export=download&id=...)
-    const DRIVE_VIEW = 'https://drive.google.com/file/d/1HAJ54A6eaTpokioQiul9MG4mIxm0zj1V/view?usp=drive_link';
-    const DRIVE_DIRECT = 'https://drive.google.com/uc?export=download&id=1HAJ54A6eaTpokioQiul9MG4mIxm0zj1V';
-
-    // Опциональный манифест обновлений (если положишь где-то JSON с {latestVersion, url, date, notes})
-    // Например: const MANIFEST_URL = './manifest.json';
-    const MANIFEST_URL = 'https://drive.google.com/file/d/1ojJxDvd6JIpZg-JjFhN4P7P667hc51Tu/view?usp=drive_link'; // оставь пустым, если манифеста нет
+    const DRIVE_ID = '1HAJ54A6eaTpokioQiul9MG4mIxm0zj1V';
+    const DRIVE_DIRECT = `https://drive.google.com/uc?export=download&id=${DRIVE_ID}`;
 
     // ——— Утилиты ———
     const $ = sel => document.querySelector(sel);
-    function semverParts(v){ return (v||'').replace(/^v/,'').split('-')[0].split('.').map(n=>parseInt(n,10)||0); }
-    function cmpSemver(a,b){
-      const [a1,a2,a3]=semverParts(a), [b1,b2,b3]=semverParts(b);
-      if(a1!==b1) return a1-b1; if(a2!==b2) return a2-b2; return a3-b3;
-    }
     function isWindows(){ return navigator.userAgent.includes('Windows'); }
+    function safeText(s){ return (s==null ? '' : String(s)); }
+    function toList(items){
+      if (!items) return [];
+      if (Array.isArray(items)) return items.map(x=>safeText(x).trim()).filter(Boolean);
+      const txt = safeText(items);
+      const parts = txt.split(/\n|•/g).map(s=>s.trim()).filter(Boolean);
+      return parts.length ? parts : [txt];
+    }
 
-    // ——— Кнопки “Скачать” и “Зеркало” ———
-    function setupDownloadButtons(){
-      const btns = ['#downloadBtn', '#downloadBtn2'].map($);
-      const mirror = $('#mirrorBtn');
-
-      // По умолчанию — прямой линк. Если что-то пойдёт не так, у пользователя есть “Зеркало” на view-страницу.
-      btns.forEach(btn => {
-        if(!btn) return;
-        btn.href = DRIVE_DIRECT;
+    // ——— Кнопки скачивания ———
+    function setupDownloadButtons(url){
+      const finalUrl = url || DRIVE_DIRECT;
+      ['#downloadBtn', '#downloadBtn2'].forEach(sel => {
+        const btn = $(sel);
+        if (!btn) return;
+        btn.href = finalUrl;
+        // download атрибут для кросс-домена игнорируется браузерами, но не мешает
         btn.setAttribute('download','');
-        btn.addEventListener('click', () => {
-          // Мягкий фидбек для пользователя
-          const meta = (btn.id === 'downloadBtn') ? $('#dlMeta') : $('#dlMeta2');
-          if (meta) meta.textContent = (meta.textContent || '') + ' • готовим загрузку…';
-        });
+        if (!btn.dataset.bound){
+          btn.addEventListener('click', () => {
+            const meta = (sel === '#downloadBtn') ? $('#dlMeta') : $('#dlMeta2');
+            if (meta && !meta.dataset.touched){
+              meta.dataset.touched = '1';
+              meta.textContent = (meta.textContent || '') + ' • готовим загрузку…';
+            }
+          });
+          btn.dataset.bound = '1';
+        }
       });
 
-      mirror.href = DRIVE_VIEW;
-
+      // Проставим видимую версию и платформенные подсказки
+      $('#ver').textContent = 'v' + CURRENT_VERSION;
+      $('#curVer').textContent = 'v' + CURRENT_VERSION;
+      $('#curVerPill').textContent = 'v' + CURRENT_VERSION;
       if (!isWindows()){
         $('#platformHint').textContent = 'Инсталлятор доступен для Windows. Вы используете другую ОС — файл всё равно можно скачать.';
       }
-
-      // Подпись “бета”
-      $('#ver').textContent = CURRENT_VERSION;
-      $('#curVer').textContent = 'v' + CURRENT_VERSION;
     }
 
     // ——— Демонстрация прогресса ———
@@ -413,55 +406,53 @@
       }, 1200);
     }
 
-    // ——— Проверка обновлений ———
-    async function checkUpdates(){
-      const status = $('#updateStatus');
-      status.textContent = 'Проверяем обновления…';
-      try{
-        if (!MANIFEST_URL){
-          // Пытаемся оценить по прямой ссылке (Last-Modified может не отдаваться из-за CORS, поэтому без гарантий)
-          status.innerHTML = 'Данных о манифесте нет. Текущая версия: <b>v' + CURRENT_VERSION + '</b>. Это бета‑версия.';
-          status.className = 'muted';
-          return;
-        }
-        const resp = await fetch(MANIFEST_URL, {cache:'no-cache'});
-        if (!resp.ok) throw new Error('HTTP ' + resp.status);
-        const manifest = await resp.json(); // { latestVersion, url, date, notes }
-        const latest = (manifest.latestVersion || '').toString();
-        if (!latest){
-          status.textContent = 'Не удалось определить последнюю версию.';
-          status.className = 'status-err';
-          return;
-        }
-        const cmp = cmpSemver(latest, CURRENT_VERSION);
-        if (cmp > 0){
-          status.innerHTML = 'Доступна новая версия: <b>v' + latest + '</b>. Это бета‑канал.';
-          status.className = 'status-ok';
-          if (manifest.url){
-            // перекинем основную кнопку на новый URL
-            ['#downloadBtn','#downloadBtn2'].forEach(id=>{
-              const btn=$(id); if(btn){ btn.href=manifest.url; }
-            });
-            const mirror = $('#mirrorBtn'); if (mirror && manifest.mirror) mirror.href = manifest.mirror;
-          }
-        } else {
-          status.innerHTML = 'У вас актуальная версия: <b>v' + CURRENT_VERSION + '</b>. Это бета‑версия.';
-          status.className = 'muted';
-        }
-      }catch(e){
-        status.textContent = 'Не удалось проверить обновления.';
-        status.className = 'status-err';
+    // ——— Ручной показ обновления (без манифестов и fetch) ———
+    // Позже пришлёшь мне версию/текст — вставим вызов:
+    // window.PulseClickUpdate({ version:'1.0.1-beta', date:'2025-09-10', summary:'Исправления и улучшения', notes:['Улучшена стабильность drag-click','Исправлены артефакты UI'], url: 'НЕОБЯЗАТЕЛЬНО: ссылка на инсталлятор' });
+    window.PulseClickUpdate = function({version, date, summary, notes, url}={}){
+      const uCard = $('#updateCard');
+      const noUpd = $('#noUpdateInfo');
+      const updVersion = $('#updVersion');
+      const updDate = $('#updDate');
+      const updSummary = $('#updSummary');
+      const updNotes = $('#updNotes');
+      const updBtn = $('#updateBtn');
+
+      // Тексты
+      const v = safeText(version);
+      updVersion.textContent = v ? `Новая версия: v${v}` : 'Новая версия';
+      updDate.textContent = date ? `• от ${safeText(date)}` : '';
+      updSummary.textContent = safeText(summary || 'Что нового');
+      updNotes.innerHTML = '';
+      toList(notes).forEach(n => {
+        const li = document.createElement('li');
+        li.textContent = n;
+        updNotes.appendChild(li);
+      });
+
+      // Кнопки скачивания остаются вести на PulseClickInstaller по умолчанию
+      // Если передан url — применим его, иначе оставим текущий DRIVE_DIRECT
+      if (url) {
+        setupDownloadButtons(url);
+        updBtn.href = url;
+      } else {
+        setupDownloadButtons();
+        updBtn.href = DRIVE_DIRECT;
       }
-    }
+
+      // Показать карточку и спрятать "обновлений нет"
+      noUpd.style.display = 'none';
+      uCard.style.display = 'block';
+    };
 
     // ——— Init ———
     window.addEventListener('DOMContentLoaded', () => {
       $('#year').textContent = new Date().getFullYear();
-      setupDownloadButtons();
-      animateBar();
-      $('#checkUpdates').addEventListener('click', checkUpdates);
+      setupDownloadButtons();  // ссылка на инсталлятор
+      animateBar();            // демо прогресса
+      // По умолчанию никаких манифестов не запрашиваем — показываем "Обновлений не найдено"
+      // Когда появится новая версия — вызовешь window.PulseClickUpdate({...}) выше.
     });
   </script>
 </body>
-
 </html>
